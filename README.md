@@ -78,7 +78,7 @@ The features selected was:
 - deferred_income.
 
 Using this classifier with test_classifier(), following results was obtained:
-- Accuracy: 0.81521;	
+- Accuracy: 0.81551;	
 - Precision: 0.37558;	
 - Recall: 0.44300;	
 - F1: 0.40652;	
