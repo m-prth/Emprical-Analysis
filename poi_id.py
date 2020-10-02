@@ -33,7 +33,7 @@ from sklearn.metrics import accuracy_score
 
 # ============= TASK 1 : DATASET EXPLORATION ... ================
 def datasetExploration(data_dict):
-    print "------ Exploration of Enron E+F Dataset --------"
+    print ("------ Exploration of Enron E+F Dataset --------")
     keys = data_dict.keys()
     print ('Number of data points: %d' %len(keys))
     print ('Number of Features Per Person: %d' %len(data_dict[keys[0]].keys()))
@@ -48,7 +48,6 @@ def datasetExploration(data_dict):
     print ('Number of POIs In The Dataset: %d' % num_poi)
     print ('Number of Non-POIs In The Dataset: %d' % (len(keys) - num_poi))
     print ('Number of People With Quantified Salary: %d' % num_real_salary)
-    print
 
 
 def featuresMissingPercentage(data_dict):
@@ -71,14 +70,12 @@ def featuresMissingPercentage(data_dict):
         missingValues[k] = v
         missingPercentage[k] = percent
 
-    print
     return missingPercentage, missingValues
 
 
 def displayMissingFeatures(missingPercentage, missingValues):
     for k, v in missingPercentage.items():
-        print missingValues[k], 'of \'' + k + '\' is missing; missing percentage is : %.2f' % v
-    print
+        print (missingValues[k], 'of \'' + k + '\' is missing; missing percentage is : %.2f' % v)
 
 
 def removeFeaturesWithMissingValuesAboveXpercentage(allFeatures, missingPercentage, threshold):
@@ -87,7 +84,6 @@ def removeFeaturesWithMissingValuesAboveXpercentage(allFeatures, missingPercenta
     for value in allFeatures:
         if (value != 'email_address' and float(missingPercentage[value]) <= threshold):
             newList.append(value)
-    print
     return newList
 
 
@@ -374,9 +370,9 @@ def naive_bayes_classifier(features_train, features_test, labels_train, labels_t
     # Compute the ratio of true positives relative to true positives and false negatives
     recall = recall_score(labels_test, pred)
 
-    print "Naive Bayes Accuracy :", accuracy
-    print 'Precision :', precision
-    print 'Recall :', recall
+    print ("Naive Bayes Accuracy :", accuracy)
+    print ('Precision :', precision)
+    print ('Recall :', recall)
     return classifier
 
 
@@ -393,9 +389,9 @@ def svm_classifier(features_train, features_test, labels_train, labels_test):
     # Compute the ratio of true positives relative to true positives and false negatives
     recall = recall_score(labels_test, pred)
 
-    print "SVM Accuracy :", accuracy
-    print 'Precision :', precision
-    print 'Recall :', recall
+    print ("SVM Accuracy :", accuracy)
+    print ('Precision :', precision)
+    print ('Recall :', recall)
     return classifier
 
 
@@ -414,9 +410,9 @@ def svm_grid_search(features_train, features_test, labels_train, labels_test):
     # Compute the ratio of true positives relative to true positives and false negatives
     recall = recall_score(labels_test, pred)
 
-    print "GridSearch Accuracy :", accuracy
-    print 'Precision :', precision
-    print 'Recall :', recall
+    print ("GridSearch Accuracy :", accuracy)
+    print ('Precision :', precision)
+    print ('Recall :', recall)
     return classifier
 
 # DECISION TREE
@@ -440,9 +436,9 @@ def decision_tree_classifier(features_train, features_test, labels_train, labels
     # Compute the ratio of true positives relative to true positives and false negatives
     recall = recall_score(labels_test, pred)
 
-    print "Decision Tree Accuracy :", accuracy
-    print 'Precision :', precision
-    print 'Recall :', recall
+    print ("Decision Tree Accuracy :", accuracy)
+    print ('Precision :', precision)
+    print ('Recall :', recall)
 
     dot_data = tree.export_graphviz(classifier, out_file=None)
     graph = graphviz.Source(dot_data)
@@ -464,9 +460,9 @@ def adaboost_classfier(features_train, features_test, labels_train, labels_test)
     # Compute the ratio of true positives relative to true positives and false negatives
     recall = recall_score(labels_test, pred)
 
-    print "Adaboost Accuracy :", accuracy
-    print 'Precision :', precision
-    print 'Recall :', recall
+    print ("Adaboost Accuracy :", accuracy)
+    print ('Precision :', precision)
+    print ('Recall :', recall)
     return classifier
 
 
@@ -483,7 +479,7 @@ features_train, features_test, labels_train, labels_test = train_test_split(
     features, labels, test_size=0.3, random_state=42)
 
 # clf = naive_bayes_classifier(features_train, features_test, labels_train, labels_test)
-#clf = svm_classifier(features_train, features_test, labels_train, labels_test)
+# clf = svm_classifier(features_train, features_test, labels_train, labels_test)
 # clf = svm_grid_search(features_train, features_test, labels_train, labels_test)
 clf = decision_tree_classifier(features_train, features_test, labels_train, labels_test)
 # clf = adaboost_classfier(features_train, features_test, labels_train, labels_test)
